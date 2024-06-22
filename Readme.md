@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Катя Одинцова](https://up.htmlacademy.ru/javascript/32/user/1702189).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Лепёшкин](https://htmlacademy.ru/profile/spearance).
 
 ---
 
