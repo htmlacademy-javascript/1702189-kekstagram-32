@@ -1,6 +1,4 @@
-const checkStringLength = (string, length) => {
-  return string.length <= length;
-};
+const checkStringLength = (string, length) => string.length <= length;
 
 const checkPalindrome = (string) => {
   const normalizedString = string.toLowerCase().replaceAll(' ', '');
@@ -20,5 +18,9 @@ const getNumber = (string) => {
       result += normalizedString[i];
     }
   }
-  return parseInt(result);
+  return parseInt(result, 10);
 };
+
+checkStringLength();
+checkPalindrome();
+getNumber();
