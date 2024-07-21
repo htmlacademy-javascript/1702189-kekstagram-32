@@ -1,5 +1,8 @@
 import {getPosts} from './data.js';
+import {renderPosts} from './render.js';
 
 const POSTS_COUNT = 25;
 
-getPosts(POSTS_COUNT);
+const generatedPosts = getPosts(POSTS_COUNT);
+
+renderPosts(generatedPosts);
