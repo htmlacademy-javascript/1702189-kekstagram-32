@@ -1,6 +1,7 @@
 import {getPosts} from './data.js';
 import {renderPosts} from './render.js';
 import {openPost} from './post-view.js';
+import './form.js';
 
 const POSTS_COUNT = 25;
 
