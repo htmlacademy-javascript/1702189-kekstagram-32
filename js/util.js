@@ -12,7 +12,10 @@ const getRandomArrayElement = (array) => {
   return randomElement;
 };
 
+const isEscape = (evt) => evt.key === 'Escape';
+
 export {
   getRandomInteger,
-  getRandomArrayElement
+  getRandomArrayElement,
+  isEscape
 };

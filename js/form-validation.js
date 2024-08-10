@@ -27,22 +27,26 @@ const validateForm = (evt) => {
 
 const isHashtagValid = (item) => VALID_SYMBOLS_REGEXP.test(item);
 
-const normaliseString = (value) => value.toLowerCase().split(' ').filter((item) => item !== '');
+const normalizeString = (value) => value.toLowerCase().split(/\s+/);
 
 const validateHashtagText = (value) => {
-  const hashtags = normaliseString(value);
+  if (!value) {
+    return true;
+  }
+
+  const hashtags = normalizeString(value);
 
   return hashtags.every(isHashtagValid);
 };
 
 const validateHashtagCount = (value) => {
-  const hashtags = normaliseString(value);
+  const hashtags = normalizeString(value);
 
   return hashtags.length <= MAX_HASHTAG_COUNT;
 };
 
 const validateHashtagRepeat = (value) => {
-  const hashtags = normaliseString(value);
+  const hashtags = normalizeString(value);
 
   const set = new Set();
 
