@@ -1,5 +1,6 @@
 import {postsContainer} from './render.js';
 import {renderCommentsList, getCommentsNumber} from './post-comments.js';
+import {isEscape} from './util';
 
 let currentPost;
 
@@ -15,7 +16,7 @@ const modalButtonClose = modalPostContainer.querySelector('.big-picture__cancel'
 modalButtonClose.addEventListener('click', closeModal);
 
 const closeModalKeydown = (evt) => {
-  if (evt.key === 'Escape') {
+  if (isEscape(evt)) {
     evt.preventDefault();
     closeModal();
   }

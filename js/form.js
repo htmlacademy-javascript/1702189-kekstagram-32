@@ -1,4 +1,7 @@
 import {pristine} from './form-validation';
+import {isEscape} from './util';
+import './picture-scaling.js';
+import {resetStyle} from './picture-effects.js';
 
 const uploadImageForm = document.querySelector('.img-upload__form');
 const uploadImageInput = uploadImageForm.querySelector('.img-upload__input');
@@ -7,7 +10,7 @@ const closeButton = editImageForm.querySelector('.img-upload__cancel');
 const hashtagInput = uploadImageForm.querySelector('.text__hashtags');
 const commentInput = uploadImageForm.querySelector('.text__description');
 
-const checkFocus = () => hashtagInput === document.querySelector(':focus') || commentInput === document.querySelector(':focus');
+const checkFocus = () => hashtagInput === document.activeElement || commentInput === document.activeElement;
 
 const closeEditForm = () => {
   editImageForm.classList.add('hidden');
@@ -16,12 +19,13 @@ const closeEditForm = () => {
   document.removeEventListener('keydown', closeEditFormKeydown);
 
   uploadImageInput.value = '';
+  resetStyle();
 
   pristine.reset();
 };
 
 function closeEditFormKeydown(evt) {
-  if (evt.key === 'Escape' && !checkFocus()) {
+  if (isEscape(evt) && !checkFocus()) {
     evt.preventDefault();
     closeEditForm();
   }
