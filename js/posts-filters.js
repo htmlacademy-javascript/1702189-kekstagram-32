@@ -38,7 +38,7 @@ const changeFilter = (posts) => {
   if (activeButton === popularButton) {
     const defaultPosts = posts.slice();
 
-    filteredPosts = defaultPosts.sort((a, b) => b.likes - a.likes);
+    filteredPosts = defaultPosts.sort((a, b) => b.comments.length - a.comments.length);
 
     makeSorting(filteredPosts);
   }

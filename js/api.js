@@ -9,7 +9,12 @@ const showDataError = () => {
 };
 
 const getData = () => fetch('https://32.javascript.htmlacademy.pro/kekstagram/data')
-  .then((response) => response.json())
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error();
+    }
+    return response.json();
+  })
   .catch(showDataError);
 
 const sendFormData = (evt) => {

@@ -56,7 +56,6 @@ const showSubmitError = () => {
 };
 
 const closeSubmitSuccess = () => {
-  document.body.classList.remove('modal-open');
   success.remove();
   document.removeEventListener('click', onBodyClick);
 };
@@ -70,7 +69,6 @@ const closeSubmitSuccesKeydown = (evt) => {
 };
 
 const showSubmitSuccess = () => {
-  document.body.classList.add('modal-open');
   body.append(success);
   document.addEventListener('keydown', closeSubmitSuccesKeydown);
   document.addEventListener('click', onBodyClick);
@@ -114,6 +112,12 @@ const sendForm = (evt) => {
   if (validateForm(evt)) {
     blockSubmitButton();
     sendFormData(evt)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response;
+      })
       .then(closeEditForm)
       .then(showSubmitSuccess)
       .catch(showSubmitError)
