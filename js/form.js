@@ -8,6 +8,8 @@ import {resetStyle} from './picture-effects.js';
 import {sendFormData} from './api.js';
 
 const uploadImageForm = document.querySelector('.img-upload__form');
+const picturePreview = document.querySelector('.img-upload__preview img');
+const previewEffects = document.querySelectorAll('.effects__preview');
 const uploadImageInput = uploadImageForm.querySelector('.img-upload__input');
 const editImageForm = uploadImageForm.querySelector('.img-upload__overlay');
 const hashtagInput = uploadImageForm.querySelector('.text__hashtags');
@@ -20,6 +22,8 @@ const error = document.querySelector('#error').content.querySelector('.error');
 const errorButton = error.querySelector('.error__button');
 const success = document.querySelector('#success').content.querySelector('.success');
 const successButton = success.querySelector('.success__button');
+
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const SubmitButtonText = {
   BLOCKED: 'Публикация',
@@ -100,10 +104,10 @@ const closeEditForm = () => {
 
   document.removeEventListener('keydown', closeEditFormKeydown);
 
-  uploadImageInput.value = '';
   resetStyle();
 
   pristine.reset();
+  uploadImageForm.reset();
 };
 
 const sendForm = (evt) => {
@@ -127,10 +131,21 @@ function closeEditFormKeydown(evt) {
 }
 
 const openEditForm = () => {
-  editImageForm.classList.remove('hidden');
-  document.body.classList.add('modal-open');
+  const file = uploadImageInput.files[0];
+  const fileName = file.name.toLowerCase();
 
-  document.addEventListener('keydown', closeEditFormKeydown);
+  if (FILE_TYPES.some((it) => fileName.endsWith(it))) {
+
+    picturePreview.src = URL.createObjectURL(file);
+    previewEffects.forEach((item) => {
+      item.style = `background-image: url("${picturePreview.src}")`;
+    });
+
+    editImageForm.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+
+    document.addEventListener('keydown', closeEditFormKeydown);
+  }
 };
 
 uploadImageInput.addEventListener('change', openEditForm);
