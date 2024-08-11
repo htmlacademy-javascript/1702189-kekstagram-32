@@ -16,6 +16,10 @@ const renderPost = ({id, url, description, likes, comments}, container) => {
 const renderPosts = (generatedPosts) => {
   const container = document.createDocumentFragment();
 
+  if (!generatedPosts) {
+    return;
+  }
+
   generatedPosts.forEach((post) => {
     renderPost(post, container);
   });
