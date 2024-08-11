@@ -23,4 +23,7 @@ const renderPosts = (generatedPosts) => {
   postsContainer.append(container);
 };
 
-export {renderPosts, postsContainer};
+export {
+  renderPosts,
+  postsContainer
+};

@@ -1,11 +1,9 @@
-import {getPosts} from './data.js';
+import {getData} from'./api.js';
 import {renderPosts} from './render.js';
 import {openPost} from './post-view.js';
 import './form.js';
 
-const POSTS_COUNT = 25;
-
-const generatedPosts = getPosts(POSTS_COUNT);
-
-renderPosts(generatedPosts);
-openPost(generatedPosts);
+getData().then((posts) => {
+  renderPosts(posts);
+  openPost(posts);
+});
