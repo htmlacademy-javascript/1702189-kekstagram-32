@@ -129,7 +129,11 @@ const changeEffect = (evt) => {
 
   useEffect();
 
-  valueInput.value = '';
+  if (evt.target === effectNone) {
+    valueInput.value = '';
+  } else {
+    valueInput.value = parseFloat(slider.noUiSlider.get());
+  }
 };
 
 slider.noUiSlider.on('update', () => {
@@ -142,7 +146,6 @@ fieldset.addEventListener('change', changeEffect);
 
 const resetStyle = () => {
   picture.style = '';
-  valueInput.value = '';
   sliderContainer.classList.add('hidden');
 };
 
