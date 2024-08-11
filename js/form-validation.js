@@ -22,7 +22,7 @@ const pristine = new Pristine(uploadImageForm, {
 
 const validateForm = (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  return pristine.validate();
 };
 
 const isHashtagValid = (item) => VALID_SYMBOLS_REGEXP.test(item);
@@ -57,8 +57,6 @@ const validateHashtagRepeat = (value) => {
 
 const validateCommentLength = (value) => value.length <= MAX_COMMENT_LENGTH;
 
-uploadImageForm.addEventListener('submit', validateForm);
-
 pristine.addValidator(
   hashtagInput,
   validateHashtagText,
@@ -89,4 +87,7 @@ pristine.addValidator(
   ERROR_COMMENT_MESSAGE
 );
 
-export {pristine};
+export {
+  pristine,
+  validateForm
+};

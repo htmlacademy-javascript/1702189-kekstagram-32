@@ -1,5 +1,8 @@
 import {postsContainer} from './render.js';
-import {renderCommentsList, getCommentsNumber} from './post-comments.js';
+import {
+  renderCommentsList,
+  getCommentsNumber
+} from './post-comments.js';
 import {isEscape} from './util';
 
 let currentPost;

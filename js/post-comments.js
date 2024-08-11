@@ -66,4 +66,7 @@ const renderCommentsList = (post) => {
   }
 };
 
-export {renderCommentsList, getCommentsNumber};
+export {
+  renderCommentsList,
+  getCommentsNumber
+};
