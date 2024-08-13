@@ -7,9 +7,10 @@ import './picture-scaling.js';
 import {resetStyle} from './picture-effects.js';
 import {sendFormData} from './api.js';
 
-const uploadImageForm = document.querySelector('.img-upload__form');
-const picturePreview = document.querySelector('.img-upload__preview img');
-const previewEffects = document.querySelectorAll('.effects__preview');
+const body = document.querySelector('body');
+const uploadImageForm = body.querySelector('.img-upload__form');
+const picturePreview = body.querySelector('.img-upload__preview img');
+const previewEffects = body.querySelectorAll('.effects__preview');
 const uploadImageInput = uploadImageForm.querySelector('.img-upload__input');
 const editImageForm = uploadImageForm.querySelector('.img-upload__overlay');
 const hashtagInput = uploadImageForm.querySelector('.text__hashtags');
@@ -17,10 +18,9 @@ const commentInput = uploadImageForm.querySelector('.text__description');
 const submitButton = uploadImageForm.querySelector('.img-upload__submit');
 const closeButton = editImageForm.querySelector('.img-upload__cancel');
 
-const body = document.querySelector('body');
-const error = document.querySelector('#error').content.querySelector('.error');
+const error = body.querySelector('#error').content.querySelector('.error');
 const errorButton = error.querySelector('.error__button');
-const success = document.querySelector('#success').content.querySelector('.success');
+const success = body.querySelector('#success').content.querySelector('.success');
 const successButton = success.querySelector('.success__button');
 
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];

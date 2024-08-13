@@ -1,6 +1,8 @@
 const dataError = document.querySelector('#data-error').content.querySelector('.data-error');
 const body = document.querySelector('body');
 
+const GET_POSTS_URL = 'https://32.javascript.htmlacademy.pro/kekstagram/data';
+const UPLOAD_POST_URL = 'https://32.javascript.htmlacademy.pro/kekstagram';
 const ERROR_TIMEOUT = 5000;
 
 const showDataError = () => {
@@ -8,7 +10,7 @@ const showDataError = () => {
   setTimeout(() => dataError.remove(), ERROR_TIMEOUT);
 };
 
-const getData = () => fetch('https://32.javascript.htmlacademy.pro/kekstagram/data')
+const getData = () => fetch(GET_POSTS_URL)
   .then((response) => {
     if (!response.ok) {
       throw new Error();
@@ -20,7 +22,7 @@ const getData = () => fetch('https://32.javascript.htmlacademy.pro/kekstagram/da
 const sendFormData = (evt) => {
   const formData = new FormData(evt.target);
 
-  return fetch('https://32.javascript.htmlacademy.pro/kekstagram', {
+  return fetch(UPLOAD_POST_URL, {
     method: 'POST',
     body: formData,
   });
